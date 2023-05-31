@@ -1,8 +1,6 @@
-import { PrimaryLayout } from "Component/Layout"
-
-import { useState } from 'react';
-import { Button, Divider, Radio, Table, Modal, Form, Checkbox, Input  } from 'antd';
-
+import { useState, useEffect } from 'react';
+import { Button, Divider, Radio, Table, Modal, Form, Checkbox, Input } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
 // Table
 const columns = [
     {
@@ -55,17 +53,12 @@ const rowSelection = {
         name: record.name,
     }),
 };
-// Form
-const onFinish = (values) => {
-    console.log('Success:', values);
-};
-const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
-};
+
 
 export const User = () => {
     // table
     const [selectionType, setSelectionType] = useState('checkbox');
+
     // modal
     const [isModalOpen, setIsModalOpen] = useState(false);
     const showModal = () => {
@@ -77,10 +70,32 @@ export const User = () => {
     const handleCancel = () => {
         setIsModalOpen(false);
     };
+
     // data
     const [dataUser, setDataUser] = useState(data);
+
+    // Form
+    const onFinish = (values) => {
+        console.log('Success:', values);
+        const newData = usersStore.listUser.concat([{
+            key: Math.floor(Math.random() * 100) + 1,
+            name: values.username,
+            age: values.age,
+            address: values.address,
+        }])
+        setDataUser(newData);
+    };
+    const onFinishFailed = (errorInfo) => {
+        console.log('Failed:', errorInfo);
+    };
+
+
+    // rematch
+
+    const usersStore = useSelector((state) => state.users);
+    const dispath = useDispatch();
     return (
-        <PrimaryLayout>
+        <div>
             <div>
                 <Radio.Group
                     onChange={({ target: { value } }) => {
@@ -100,10 +115,10 @@ export const User = () => {
                         ...rowSelection,
                     }}
                     columns={columns}
-                    dataSource={data}
+                    dataSource={usersStore.listUser}
                 />
             </div>
-            <Button type="primary" onClick={showModal}>Add user</Button>
+
             <Modal title="Basic Modal" footer={null} open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
                 <Form
                     name="basic"
@@ -149,7 +164,7 @@ export const User = () => {
                         {/* <Input.Password /> */}
                         <Input />
                     </Form.Item>
-                    
+
                     <Form.Item
                         label="Address"
                         name="address"
@@ -176,7 +191,11 @@ export const User = () => {
                     </Form.Item>
                 </Form>
             </Modal>
-        </PrimaryLayout>
+            <Button type="primary" onClick={showModal}>Add user</Button>
+            <Button type="primary" style={{ margin: "20px" }}>Delete user</Button>
+        </div>
+
+
     );
 
 }

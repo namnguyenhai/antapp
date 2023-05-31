@@ -1,14 +1,22 @@
 import React from 'react';
-import { Routes,Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, } from 'react-router-dom';
 import Home from 'Container/Home';
 import User from 'Container/User';
+import Customer from 'Container/Customer';
+import { PrimaryLayout } from 'Component/Layout';
 const App = () => {
 
   return (
-      <Routes>
-        <Route  path='/' element={<Home></Home>}></Route>
-        <Route path='/user' element={<User></User>}></Route>
-      </Routes>
+    <BrowserRouter>
+      <PrimaryLayout tittle={"Home Page"}>
+        <Routes>
+          <Route path='/' element={<Home></Home>}></Route>
+          <Route path='/user' element={<User></User>}></Route>
+          <Route path='/customer' element={<Customer></Customer>}></Route>
+        </Routes>
+      </PrimaryLayout>
+    </BrowserRouter>
+
   );
 };
 

@@ -1,64 +1,65 @@
-import { styled } from "styled-components"
-import { Helmet } from "react-helmet";
 import {
     MenuFoldOutlined,
-    UploadOutlined,
     UserOutlined,
-    VideoCameraOutlined,
     HomeOutlined,
-    MenuUnfoldOutlined
+    MenuUnfoldOutlined,
+    UsergroupAddOutlined
 } from '@ant-design/icons';
+import { styled } from "styled-components"
+import { Helmet } from "react-helmet";
 import { Button, Layout, Menu, theme } from 'antd';
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import {  NavLink, useNavigate } from "react-router-dom";
+
 const { Header, Sider, Content } = Layout;
 const StyledPrimaryLayout = styled.div`
     background-color: #CAEAE6;
     height: 100vh;
-    /* overflow: hidden; */
+    width: 100%;
+    overflow: hidden;
 `
 export const PrimaryLayout = ({ tittle, children }) => {
     const [collapsed, setCollapsed] = useState(false);
     const {
         token: { colorBgContainer },
     } = theme.useToken();
+    // const navigate = useNavigate();
     return <StyledPrimaryLayout>
-        <Helmet>
+        {/* <Helmet>
             <meta charSet="utf-8" />
             <title>{tittle}</title>
 
-        </Helmet>
+        </Helmet> */}
         <Layout style={{height:"100vh"}}>
             <Sider trigger={null} collapsible collapsed={collapsed}>
                 <div className="demo-logo-vertical" />
+
                 <Menu
                     theme="dark"
                     mode="inline"
-                   
+
                     items={[
                         {
                             key: '1',
-                            
                             icon: <HomeOutlined />,
-                            label:  <Link to="/">Home</Link>,
-                            
+                            label: <NavLink to="/">Home</NavLink>,
+                            component: 'a'
                         },
                         {
                             key: '2',
-                            
                             icon: <UserOutlined />,
-                            label: <Link to="/user">User</Link>,
+                            label: <NavLink to="/user">User</NavLink>,
                             
                         },
                         {
                             key: '3',
-                            icon: <UploadOutlined />,
-                            label: 'nav 3',
+                            icon: <UsergroupAddOutlined />,
+                            label: <NavLink to="/customer">Customer</NavLink>,
                         },
                     ]}
                 />
             </Sider>
-            <Layout>
+            
                 <Header
                     style={{
                         padding: 0,
@@ -91,7 +92,7 @@ export const PrimaryLayout = ({ tittle, children }) => {
                     {children}
 
                 </Content>
-            </Layout>
+            
         </Layout>
     </StyledPrimaryLayout>
 }

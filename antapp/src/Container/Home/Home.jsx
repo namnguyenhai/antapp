@@ -93,8 +93,8 @@ export const Home = () => {
     ];
 
     return (
-        <PrimaryLayout tittle={"Home Page"}>
-            {/* <StyledHome> */}
+        
+            // {/* <StyledHome> */}
                 <Row gutter={16} justify={"center"}>
                     <Col span={12} align="middle" >
                         <Statistic title="Active Users" value={1000} prefix={<UserOutlined></UserOutlined>} />
@@ -118,8 +118,5 @@ export const Home = () => {
                     </Col>
                 </Row>
 
-            {/* </StyledHome> */}
-
-        </PrimaryLayout>
     );
 }
