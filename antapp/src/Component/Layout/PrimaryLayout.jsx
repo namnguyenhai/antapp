@@ -3,7 +3,8 @@ import {
     UserOutlined,
     HomeOutlined,
     MenuUnfoldOutlined,
-    UsergroupAddOutlined
+    UsergroupAddOutlined,
+    LineChartOutlined
 } from '@ant-design/icons';
 import { styled } from "styled-components"
 import { Helmet } from "react-helmet";
@@ -55,6 +56,11 @@ export const PrimaryLayout = ({ tittle, children }) => {
                             key: '3',
                             icon: <UsergroupAddOutlined />,
                             label: <NavLink to="/customer">Customer</NavLink>,
+                        },
+                        {
+                            key: '4',
+                            icon: <LineChartOutlined />,
+                            label: <NavLink to="/chart">Chart</NavLink>,
                         },
                     ]}
                 />

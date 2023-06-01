@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, } from 'react-router-dom';
 import Home from 'Container/Home';
 import User from 'Container/User';
 import Customer from 'Container/Customer';
+import Chart from 'Container/Chart';
 import { PrimaryLayout } from 'Component/Layout';
 const App = () => {
 
@@ -13,6 +14,7 @@ const App = () => {
           <Route path='/' element={<Home></Home>}></Route>
           <Route path='/user' element={<User></User>}></Route>
           <Route path='/customer' element={<Customer></Customer>}></Route>
+          <Route path='/chart' element={<Chart></Chart>}></Route>
         </Routes>
       </PrimaryLayout>
     </BrowserRouter>

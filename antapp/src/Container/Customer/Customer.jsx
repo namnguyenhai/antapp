@@ -1,6 +1,7 @@
 import { Divider, Radio, Table, Button } from 'antd';
 import { useState } from 'react';
 import { CSVLink } from 'react-csv';
+import { useDispatch, useSelector } from 'react-redux';
 import { styled } from "styled-components";
 
 const StyledUser = styled.div`
@@ -22,32 +23,32 @@ const columns = [
         dataIndex: 'address',
     },
 ];
-const data = [
-    {
-        key: '1',
-        name: 'John Brown',
-        age: 32,
-        address: 'New York No. 1 Lake Park',
-    },
-    {
-        key: '2',
-        name: 'Jim Green',
-        age: 42,
-        address: 'London No. 1 Lake Park',
-    },
-    {
-        key: '3',
-        name: 'Joe Black',
-        age: 32,
-        address: 'Sydney No. 1 Lake Park',
-    },
-    {
-        key: '4',
-        name: 'Disabled User',
-        age: 99,
-        address: 'Sydney No. 1 Lake Park',
-    },
-];
+// const data = [
+//     {
+//         key: '1',
+//         name: 'John Brown',
+//         age: 32,
+//         address: 'New York No. 1 Lake Park',
+//     },
+//     {
+//         key: '2',
+//         name: 'Jim Green',
+//         age: 42,
+//         address: 'London No. 1 Lake Park',
+//     },
+//     {
+//         key: '3',
+//         name: 'Joe Black',
+//         age: 32,
+//         address: 'Sydney No. 1 Lake Park',
+//     },
+//     {
+//         key: '4',
+//         name: 'Disabled User',
+//         age: 99,
+//         address: 'Sydney No. 1 Lake Park',
+//     },
+// ];
 const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
         console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
@@ -60,6 +61,9 @@ const rowSelection = {
 };
 export const Customer = () => {
     const [selectionType, setSelectionType] = useState('checkbox');
+    const [dataCustomer, setDataCustomer] = useState({});
+    const customersStore = useSelector((state) => state.customer);
+    const dispatch = useDispatch(); 
     return (<StyledUser>
         <div>
             <Radio.Group
@@ -80,10 +84,10 @@ export const Customer = () => {
                     ...rowSelection,
                 }}
                 columns={columns}
-                dataSource={data}
+                dataSource={customersStore.listCustomer}
             />
         </div>
-        <Button type="primary"><CSVLink data={data}>Download me</CSVLink></Button>
+        <Button type="primary"><CSVLink data={customersStore.listCustomer}>Download me</CSVLink></Button>
         
 
     </StyledUser>
