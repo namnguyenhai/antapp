@@ -1,5 +1,5 @@
 import { styled } from "styled-components"
-import { Line, RadialBar } from '@ant-design/plots';
+import { Line, RadialBar, Column } from '@ant-design/plots';
 import { Col, Row } from 'antd';
 const StyledChart = styled.div`
     width: 100%;
@@ -377,8 +377,41 @@ const dataRadialBar = [
     },
 
 ]
-export const Chart = () => {
+// const dataColumnBar = [
+//     {
+//       type: '6',
+//       value: 130000,
+//     },
+//     {
+//       type: '7',
+//       value: -120000,
+//     },
+//     {
+//       type: '8',
+//       value: 220000,
+//     },
+//     {
+//       type: '9',
+//       value: -20000,
+//     },
+//     {
+//       type: '10',
+//       value: -10000,
+//     },
+//     {
+//       type: '11',
+//       value: 10000,
+//     },
+//     {
+//       type: '12',
+//       value: 15000,
+//     },
 
+//   ];
+
+export const Chart = () => {
+    const paletteSemanticRed = '#F4664A';
+    const brandColor = '#5B8FF9';
     const configCurveLine = {
         data: dataCurveLine,
         padding: 'auto',
@@ -436,13 +469,18 @@ export const Chart = () => {
         },
 
     };
+     
+    
+    
     return <StyledChart>
         <Row gutter={[16, 24]}>
             <Col span={24}><Line {...configCurveLine}></Line></Col>
             <Col span={12} align="middle">
-                <RadialBar className="counter_clock"  {...configRaidalBar}></RadialBar>
+                <RadialBar  {...configRaidalBar}></RadialBar>
             </Col>
-            <Col span={12}>b</Col>
+            <Col span={12}>
+                
+            </Col>
         </Row>
 
 
