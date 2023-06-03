@@ -1,4 +1,4 @@
-import { styled } from "styled-components"
+import styled  from "styled-components"
 import { Line, RadialBar, Column } from '@ant-design/plots';
 import { Col, Row } from 'antd';
 const StyledChart = styled.div`

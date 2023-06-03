@@ -6,7 +6,7 @@ import {
     UsergroupAddOutlined,
     LineChartOutlined
 } from '@ant-design/icons';
-import { styled } from "styled-components"
+import styled  from "styled-components"
 import { Helmet } from "react-helmet";
 import { Button, Layout, Menu, theme } from 'antd';
 import { useState } from "react";
