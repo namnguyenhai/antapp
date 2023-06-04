@@ -2,7 +2,7 @@ const data = [
     {
         key: '1',
         name: 'Hai Nam',
-        age: 32,
+        age: 23,
         address: 'New York No. 1 Lake Park',
     },
     {
