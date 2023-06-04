@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/antapp/static/css/main.e6c13ad2.css",
+    "main.js": "/antapp/static/js/main.42b1b13c.js",
+    "static/js/787.6f112db0.chunk.js": "/antapp/static/js/787.6f112db0.chunk.js",
+    "index.html": "/antapp/index.html",
+    "main.e6c13ad2.css.map": "/antapp/static/css/main.e6c13ad2.css.map",
+    "main.42b1b13c.js.map": "/antapp/static/js/main.42b1b13c.js.map",
+    "787.6f112db0.chunk.js.map": "/antapp/static/js/787.6f112db0.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.42b1b13c.js"
+  ]
+}
